@@ -1,5 +1,5 @@
 import {useAuth} from "../auth/useAuth.ts";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 export default function DashboardPage() {
     const navigate = useNavigate()
@@ -15,6 +15,7 @@ export default function DashboardPage() {
         <nav>
             <h1>Dashboard</h1>
             {isAuthenticated && (<button onClick={handleLogout}>Logout</button>)}
+            <Link to="/exercises">All exercises</Link>
         </nav>
     )
 }

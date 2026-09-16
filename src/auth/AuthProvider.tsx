@@ -8,7 +8,7 @@ interface AuthProviderProps {
     children: ReactNode
 }
 
-export function AuthProvider({ children }: AuthProviderProps) {
+export function AuthProvider(props: AuthProviderProps) {
     const [isAuthenticated, setIsAuthenticated] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
 
@@ -45,7 +45,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
                 logout,
             }}
         >
-            {children}
+            {props.children}
         </AuthContext.Provider>
     )
 }
