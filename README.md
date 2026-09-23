@@ -1,75 +1,98 @@
-# React + TypeScript + Vite
+# Fitness Tracker Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React frontend for the fitness tracking application.
 
-Currently, two official plugins are available:
+The frontend communicates with the Django REST API and provides the user interface for the application.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+> The frontend is currently in early development and is not yet feature-complete.
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* React
+* TypeScript
+* Vite
+* Docker
+* Docker compose
 
-## Expanding the ESLint configuration
+## Current Status
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+The frontend is in the initial development stage.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Current work focuses on:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+* Application structure and routing
+* API integration with the Django backend
+* Exercise-related views
+* Reusable UI components
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+More functionality will be added as development progresses.
 
+## Configuration
+
+Environment-specific configuration should be stored in a .env file.
+
+```env
+VITE_API_URL=http://127.0.0.1:8000
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+## Running Locally
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Install dependencies:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm install
 ```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+## Running with Docker
+
+Before initial startup create a network "fitness-tracker-network". This network must exist before starting the service. Compose will not create it automatically:
+
+```bash
+docker network create fitness-tracker-network
+```
+
+Build and start the service:
+
+```bash
+docker compose up --build
+```
+
+Start it without rebuilding:
+
+```bash
+docker compose up
+```
+
+Run it in the background:
+
+```bash
+docker compose up -d
+```
+
+Stop the service:
+
+```bash
+docker compose down
+```
+
+## Backend
+
+The frontend communicates with the main Django REST Framework backend.
+
+The backend is responsible for:
+
+* Authentication
+* User data
+* Exercises and workouts
+* Training and nutrition plans
+* Persistent storage
+* Communication with the AI service
+* Development Status
+
+This project is under active development and should currently be considered an early-stage frontend.
